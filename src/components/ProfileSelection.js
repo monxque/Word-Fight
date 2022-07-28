@@ -41,7 +41,7 @@ function ProfileSelection() {
     setProfiles([]);
   };
 
-// set profile list
+  // set profile list
   const profileList = profiles
     .map(profile => (
       <Profile
@@ -57,14 +57,31 @@ function ProfileSelection() {
       />
     ));
 
-  // edit functions
+  // PROFILE UPDATE functions
+
+  //add profiles
   function addProfile(name) {
-    const newProfile = { id: "profile-" + nanoid(), name: name, maxScore: 0, current: false };
-    const addedProfileList = profiles.slice();
-    addedProfileList.push(newProfile);
-    setProfiles(addedProfileList);
+    const data = localStorage.getItem('listOfProfiles');
+    //if have existing profiles
+    if (data) {
+      //set all other profiles's current status as false
+      const updatedProfiles = profiles.map(profile => {
+        return { ...profile, current: false }
+      });
+      //add the new profile
+      const newProfile = { id: "profile-" + nanoid(), name: name, maxScore: 0, current: true };
+      updatedProfiles.push(newProfile);
+      setProfiles(updatedProfiles);
+    } else {
+      //add the new profile
+      const newProfile = { id: "profile-" + nanoid(), name: name, maxScore: 0, current: true };
+      const addedProfileList = profiles.slice();
+      addedProfileList.push(newProfile);
+      setProfiles(addedProfileList);
+    }
   }
 
+  //remove profile and all records
   function deleteProfile(id) {
     const answer = window.confirm("Removing profile will also remove the related score records, are you sure?");
     if (answer) {
@@ -73,6 +90,7 @@ function ProfileSelection() {
     }
   }
 
+  //edit profile name
   function editProfile(id, newName) {
     const editedProfilesList = profiles.map(profile => {
       if (id === profile.id) {
@@ -81,7 +99,7 @@ function ProfileSelection() {
       return profile;
     })
     setProfiles(editedProfilesList);
-
+    //update the name in score history too
     const scoreData = localStorage.getItem('scoreHistory');
     if (scoreData) {
       const scoreHistory = JSON.parse(scoreData);
@@ -97,6 +115,7 @@ function ProfileSelection() {
     }
   }
 
+  //select current profile
   function setCurrent(id) {
     const updatedProfiles = profiles.map(profile => {
       // if this task has the same ID as the edited profile
@@ -132,13 +151,13 @@ function ProfileSelection() {
         Profile Lists
       </h2>
       <div className="list-bg">
-      <ul
-        role="list"
-        className="stack-large stack-exception"
-        aria-labelledby="list-heading"
-      >
-        {profileList}
-      </ul>
+        <ul
+          role="list"
+          className="stack-large stack-exception"
+          aria-labelledby="list-heading"
+        >
+          {profileList}
+        </ul>
       </div>
     </div>
   );

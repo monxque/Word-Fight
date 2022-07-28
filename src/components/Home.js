@@ -28,25 +28,37 @@ function Home() {
     }
   }, []);
 
+  const withprofiletemplate = (
+    <div className="currprofile">
+      <div>
+        <div>Current Profile</div>
+        <div className="profileName">{currProfile.name}</div>
+      </div>
+      <div>
+        <div>Best Score</div>
+        <div>{currProfile.maxScore}</div>
+      </div>
+      <div>
+        <Link to="/profileselection" tabIndex="-1" ><button className="btn" >Switch Profile</button></Link></div>
+    </div>
+  );
+
+  const noprofiletemplate = (
+    <div className="currprofile">
+      <Link to="/profileselection" tabIndex="-1" >
+        <button className="btn btn__lg" >Add Profile</button>
+      </Link>
+    </div>
+  );
+
   return (
     <div className="homepage">
 
       <h1>WORD FIGHT</h1>
-      <div className="currprofile">
-        <div>
-          <div>Current Profile</div>
-          <div className="profileName">{currProfile.name}</div>
-          </div>
-        <div>
-          <div>Best Score</div>
-          <div>{currProfile.maxScore}</div>
-          </div>
-        <div>
-          <Link to="/profileselection" tabIndex="-1" ><button className="btn" >Switch Profile</button></Link></div>
-      </div>
-      <div className="instructions list-bg"> 
-      <h3>Instructions</h3>
-      <p>Monsters are coming to our castle! Cast the spell by typing <span className="emphasize">three words correctly in a row</span> to erase a monster! Don't let them reach our castle!</p></div>
+      {currProfile.name !=="" ? withprofiletemplate : noprofiletemplate}
+      <div className="instructions list-bg">
+        <h3>Instructions</h3>
+        <p>Monsters are coming to our castle! Cast the spell by typing <span className="emphasize">three words correctly in a row</span> to erase a monster! Don't let them reach our castle!</p></div>
       <Link to="/gameplay" tabIndex="-1"> <button >Start </button></Link>
       <Link to="/leaderboard" tabIndex="-1"><button>Leader Board</button></Link>
       <Link to="/credits" tabIndex="-1"> <button>Credits</button></Link>
