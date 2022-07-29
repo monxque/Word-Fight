@@ -77,12 +77,6 @@ export default function WordTyping(props) {
             return;
         }
 
-        // start the game by typing any thing
-        // if (props.status !== "started" && props.status !== "finished") {
-        //     props.setStatus('started');
-        //     return;
-        // }
-
         // check if input char is correct
         // console.log("expected: " + wordList.charAt(currCharIndex));
         // console.log("typed: " + typedChar);
@@ -99,13 +93,11 @@ export default function WordTyping(props) {
                 outputRef.current.innerHTML = "";
                 let currentDisWord = wordList.substring(currCharIndex + 1, currCharIndex + 80);
                 setCurrDisplayWords(currentDisWord);
-                // setCorrectWords(correctWords + 1);
                 props.setScore(props.score + 30);
                 setCountCorrectWords(countCorrectWords + 1);
                 alertRef.current.innerHTML = "";
                 if (countCorrectWords >= 3) {
                     props.setScore(props.score + 50);
-                    // console.log("add 50")
                     props.setClearMon(true);
                     setCountCorrectWords(1);
                     alertRef.current.innerHTML = "3 combos in a row! Hurray!"
@@ -123,12 +115,11 @@ export default function WordTyping(props) {
             // console.log("wrong")
         }
 
-        //end game => ! to be setup
-        // if (currWordIndex + 1 === WORDLIMIT) {
-        //     end();
-        //     return;
-        // }
     };
+
+    const handleClick = (e) => {
+        e.current.focus();
+    }
 
     return (
 
@@ -154,13 +145,14 @@ export default function WordTyping(props) {
                 (
                     <div className="output" tabIndex="0"
                         onKeyDown={handleKeyDown}
+                        onClick={handleClick}
                         ref={outputRef}
                     >
                     </div>
                 ) :
                 (
                     <div className="output" tabIndex="-1" ref={outputRef} >
-                        {(props.status === "ended")? "Press RESET to continue": "Press GO to start!"}
+                        {(props.status === "ended") ? "Press RESET to continue" : "Press GO to start!"}
                     </div>
                 )}
 
