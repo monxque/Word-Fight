@@ -118,7 +118,7 @@ export default function WordTyping(props) {
     };
 
     const handleClick = (e) => {
-        e.current.focus();
+        setTimeout(() => e.current.focus(), 0);
     }
 
     return (
