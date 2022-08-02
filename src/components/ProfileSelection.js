@@ -88,6 +88,15 @@ function ProfileSelection() {
       const remainingProfiles = profiles.filter(profile => id !== profile.id);
       setProfiles(remainingProfiles);
     }
+       //remove the records in score history too
+       const scoreData = localStorage.getItem('scoreHistory');
+       if (scoreData) {
+         const scoreHistory = JSON.parse(scoreData);
+         if (scoreHistory) {
+           const newScoreHistory = scoreHistory.filter(score => id !== score.id);
+           localStorage.setItem('scoreHistory', JSON.stringify(newScoreHistory));
+         }
+       }
   }
 
   //edit profile name
