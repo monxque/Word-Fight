@@ -83,20 +83,30 @@ function ProfileSelection() {
 
   //remove profile and all records
   function deleteProfile(id) {
+    //confirm if they want to remove
     const answer = window.confirm("Removing profile will also remove the related score records, are you sure?");
+    //remove profile and assign the first profile as current
     if (answer) {
-      const remainingProfiles = profiles.filter(profile => id !== profile.id);
+      const remainingProfiles = profiles
+      .filter(profile => id !== profile.id)
+      .map((profile, i) => {
+        if (i === 0) {
+          return { ...profile, current: true }
+        }
+        return profile;
+      });;
       setProfiles(remainingProfiles);
     }
-       //remove the records in score history too
-       const scoreData = localStorage.getItem('scoreHistory');
-       if (scoreData) {
-         const scoreHistory = JSON.parse(scoreData);
-         if (scoreHistory) {
-           const newScoreHistory = scoreHistory.filter(score => id !== score.id);
-           localStorage.setItem('scoreHistory', JSON.stringify(newScoreHistory));
-         }
-       }
+    //remove the records in score history too
+    const scoreData = localStorage.getItem('scoreHistory');
+    if (scoreData) {
+      const scoreHistory = JSON.parse(scoreData);
+      if (scoreHistory) {
+        const newScoreHistory = scoreHistory
+        .filter(score => id !== score.id);
+        localStorage.setItem('scoreHistory', JSON.stringify(newScoreHistory));
+      }
+    }
   }
 
   //edit profile name
