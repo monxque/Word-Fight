@@ -36,6 +36,7 @@ export default function Documentation() {
                 <h3>Additional information:</h3>
                 <ul>
                     <li>Since the API Pixel Encounter does not pass the CORS policy, a CORS proxy is used to allow fetching data from this API. The source of this proxy is mentioned in <Link to="/sources">Sources</Link> page.</li>
+                    <li>Some validation checkings are added in the game. For example, player cannot start the game before they create the first profile. During actions like add profile or remove profile, there is automation to select a profile to avoid no current profile after the actions. A loading overlay is added during paragraph fetching to avoid player starts the game before it is loaded.</li>
                 </ul>
                 <h3>Third Party API:</h3>
                 <ul>
