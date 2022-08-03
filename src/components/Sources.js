@@ -14,7 +14,11 @@ export default function Sources() {
         <li>Google Fonts <a href="https://fonts.google.com/specimen/Press+Start+2P">Press Start 2P</a> and <a href="https://fonts.google.com/specimen/VT323">VT323</a> are used.</li>
         <li>Text contents are created by Monxque.</li>
         </ul>
-
+        <h3>Reference: </h3>
+        <ul>
+        <li>A CORS proxy <a href="https://github.com/Rob--W/cors-anywhere">CORS everywhere</a> are replicated and deployed, which is used as a dedicated proxy for this project.</li>
+        </ul>
+        
       
         </div>
     </div>

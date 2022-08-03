@@ -15,26 +15,37 @@ export default function Gameplay() {
     const [monIDPter, setMonIDPter] = useState(1);
     const [monsters, setMonsters] = useState([]);
     const [removedMon, setRemovedMon] = useState(1);
+    const [loaded, setLoaded] = useState(false);
 
     //ACTIONS
     // start actions
     const start = () => {
-        if (status !== "started") {
-            if (status === "ended") {
-                reset();
-            }
+        //check if there is profile created
+        const data = localStorage.getItem('listOfProfiles');
+        if (data) {
+            if (data === "[]") {
+                alert("Please select profile first!");
+            } else {
+                // reset before start
+                if (status !== "started") {
+                    if (status === "ended") {
+                        reset();
+                    }
 
-            //set time loop
-            if (status === "waiting") {
-                const newIntervalId = setInterval(() => {
-                    setTime((prevTime) => prevTime + 1);
-                }, 1000);
-                setIntervalId(newIntervalId);
-                console.log("time is " + time);
-                setStatus("started");
-                setTimeRunning(true);
+                    //start and set time loop
+                    if (status === "waiting") {
+                        const newIntervalId = setInterval(() => {
+                            setTime((prevTime) => prevTime + 1);
+                        }, 1000);
+                        setIntervalId(newIntervalId);
+                        console.log("time is " + time);
+                        setStatus("started");
+                        setTimeRunning(true);
+                    }
+                }
             }
         }
+
     };
 
     //reset actions
@@ -122,10 +133,7 @@ export default function Gameplay() {
 
     useEffect(() => {
         if (clearMon) {
-            // console.log("removing mon " + removedMon);
-            // if (removedMon <= monIDPter){
             removeMonster(removedMon);
-            // }
         }
     }, [clearMon]);
 
@@ -180,7 +188,6 @@ export default function Gameplay() {
     // initialize the monsters
     const initMon = () => {
         setMonsters([]);
-        // console.log(monsters);
         let initmonsterlist = [];
         let initNo = 1;
         for (let i = 1; i <= initNo; i++) {
@@ -211,10 +218,11 @@ export default function Gameplay() {
 
     return (
         <div >
+            <div className={loaded?"loading":"loaded"}>LOADING...</div>
             <h1>WORD FIGHT</h1>
             <div className="score"> <span >Score: {score}</span>
                 <button className="btn" onClick={start}>
-                    {(status === "ended")? "RESET" : "GO!"}
+                    {(status === "ended") ? "RESET" : "GO!"}
                 </button>
 
             </div>
@@ -228,6 +236,8 @@ export default function Gameplay() {
                 timeRunning={timeRunning}
                 setTimeRunning={setTimeRunning}
                 setTime={setTime}
+                loaded={loaded}
+                setLoaded={setLoaded}
             />
 
             <svg

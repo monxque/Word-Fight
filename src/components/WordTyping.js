@@ -8,7 +8,6 @@ export default function WordTyping(props) {
     const [wordList, setWordList] = useState(() => { "" });
     const [currCharIndex, setCurrCharIndex] = useState(0);
     const [currDisplayWords, setCurrDisplayWords] = useState("");
-    // const [correctWords, setCorrectWords] = useState(0);
     const [countCorrectWords, setCountCorrectWords] = useState(1);
     const [isError, setIsError] = useState(false);
 
@@ -39,7 +38,6 @@ export default function WordTyping(props) {
     }, []);
 
     //fetch the word list
-    const [loaded, setLoaded] = useState(false);
     useEffect(() => {
         async function fetchData() {
             if (loading) {
@@ -47,7 +45,7 @@ export default function WordTyping(props) {
                 const apiUrl = 'https://whispering-wildwood-90649.herokuapp.com/http://metaphorpsum.com/paragraphs/5';
                 const res = await axios.get(apiUrl);
                 const loaded_words = res.data.replace(/\s+/g, " ");
-                setLoaded(true);
+                props.setLoaded(true);
                 setWordList(loaded_words);
                 setLoading(false);
                 console.log(loaded_words);
@@ -58,13 +56,13 @@ export default function WordTyping(props) {
 
     // initiate the wordlist after first load
     useEffect(() => {
-        if (loaded) {
+        if (props.loaded) {
             setCurrDisplayWords(wordList);
             setCountCorrectWords(1);
             setCurrCharIndex(0);
-            setLoaded(false)
+            props.setLoaded(false)
         }
-    }, [loaded]);
+    }, [props.loaded]);
 
     //watch the typing
     const handleKeyDown = (e) => {

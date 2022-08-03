@@ -309,8 +309,30 @@ nav {
   background-color: rgba(255, 255, 255, 0.35);
 }
 .list-bg > * {
-  padding: 1em;
+  padding: 1.5rem 2rem;
   margin: 0;
+}
+.list-bg > * > *{
+  padding: 1rem 0 ;
+  margin: 0;
+}
+
+.loaded{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #00000083;
+  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 50%;
+  color: #fff;
+}
+
+.loaded {
+  display: none;
 }
 /* homepage buttons */
 .currprofile ~a button{

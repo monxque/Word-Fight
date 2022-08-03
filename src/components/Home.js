@@ -57,7 +57,8 @@ function Home() {
         <p>Monsters are coming to our castle! Cast the spell by <span className="emphasize">typing THREE WORDS CORRECTLY in a row</span> to erase a monster! Don't let them reach our castle!</p></div>
       <Link to="/gameplay" tabIndex="-1"> <button >Start </button></Link>
       <Link to="/leaderboard" tabIndex="-1"><button>Leader Board</button></Link>
-      <Link to="/credits" tabIndex="-1"> <button>Credits</button></Link>
+      <Link to="/documentation" tabIndex="-1"> <button>Documentation</button></Link>
+      <Link to="/sources" tabIndex="-1"> <button>Sources</button></Link>
     </div>
 
   );
