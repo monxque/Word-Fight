@@ -122,36 +122,29 @@ export default function WordTyping(props) {
         <div className="stack-small">
 
             <div className="gamealert" ref={alertRef}></div>
-            {(props.status === "started") ? (
-                <div
-                    className={`input ${(props.status === "started") ? ' active' : ''}${isError
-                        ? ' is-error'
-                        : ''}`}
-                    ref={inputRef}
-                >
+            <div>
+                <p>Spell:</p>
+                <div className="input" tabIndex="-1" ref={inputRef}>
                     {currDisplayWords}
                 </div>
-            ) : (
-                <div className="input text-muted" tabIndex="-1" ref={inputRef}>
-                    {currDisplayWords}
-                </div>
-            )}
-
-            {(props.status === "started") ?
-                (
-                    <div className="output" tabIndex="0"
-                        onKeyDown={handleKeyDown}
-                        onClick={handleClick}
-                        ref={outputRef}
-                    >
-                    </div>
-                ) :
-                (
-                    <div className="output" tabIndex="-1" ref={outputRef} >
-                        {(props.status === "ended") ? "Press RESET to continue" : "Press GO to start!"}
-                    </div>
-                )}
-
+            </div>
+            <div>
+                <p>Type here:</p>
+                {(props.status === "started") ?
+                    (
+                        <div className="output" tabIndex="0"
+                            onKeyDown={handleKeyDown}
+                            onClick={handleClick}
+                            ref={outputRef}
+                        >
+                        </div>
+                    ) :
+                    (
+                        <div className="output" tabIndex="-1" ref={outputRef} >
+                            {(props.status === "ended") ? "Press RESET to continue" : "Press GO to start!"}
+                        </div>
+                    )}
+            </div>
         </div>
     );
 
