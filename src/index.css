@@ -317,7 +317,7 @@ nav {
   margin: 0;
 }
 
-.loaded{
+.loading{
   position: fixed;
   width: 100%;
   height: 100%;
@@ -327,8 +327,9 @@ nav {
   left: 0;
   right: 0;
   bottom: 0;
-  padding-top: 50%;
+  padding-top: 50vh;
   color: #fff;
+  font-size: 3rem;
 }
 
 .loaded {

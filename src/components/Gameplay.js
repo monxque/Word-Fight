@@ -16,6 +16,7 @@ export default function Gameplay() {
     const [monsters, setMonsters] = useState([]);
     const [removedMon, setRemovedMon] = useState(1);
     const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     //ACTIONS
     // start actions
@@ -218,7 +219,7 @@ export default function Gameplay() {
 
     return (
         <div >
-            <div className={loaded?"loading":"loaded"}>LOADING...</div>
+            <div className={loading&&!loaded?"loading":"loaded"}>LOADING...</div>
             <h1>WORD FIGHT</h1>
             <div className="score"> <span >Score: {score}</span>
                 <button className="btn" onClick={start}>
@@ -238,6 +239,8 @@ export default function Gameplay() {
                 setTime={setTime}
                 loaded={loaded}
                 setLoaded={setLoaded}
+                loading={loading}
+                setLoading={setLoading}
             />
 
             <svg

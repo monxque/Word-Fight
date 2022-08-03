@@ -4,7 +4,6 @@ import axios from 'axios';
 export default function WordTyping(props) {
 
     // set up states
-    const [loading, setLoading] = useState(false);
     const [wordList, setWordList] = useState(() => { "" });
     const [currCharIndex, setCurrCharIndex] = useState(0);
     const [currDisplayWords, setCurrDisplayWords] = useState("");
@@ -18,14 +17,13 @@ export default function WordTyping(props) {
 
     //start, reset, end function
 
-
     useEffect(() => {
         if (props.status === "started") {
             outputRef.current.focus();
             outputRef.current.innerHTML = "";
         }
         if (props.status === "waiting") {
-            setLoading(true);
+            props.setLoading(true);
             alertRef.current.innerHTML = "";
         }
         if (props.status === "ended") {
@@ -34,25 +32,25 @@ export default function WordTyping(props) {
     }, [props.status]);
 
     useEffect(() => {
-        setLoading(true);
+        props.setLoading(true);
     }, []);
 
     //fetch the word list
     useEffect(() => {
         async function fetchData() {
-            if (loading) {
+            if (props.loading) {
                 console.log("fetch data");
                 const apiUrl = 'https://whispering-wildwood-90649.herokuapp.com/http://metaphorpsum.com/paragraphs/5';
                 const res = await axios.get(apiUrl);
                 const loaded_words = res.data.replace(/\s+/g, " ");
                 props.setLoaded(true);
                 setWordList(loaded_words);
-                setLoading(false);
+                props.setLoading(false);
                 console.log(loaded_words);
             }
         }
         fetchData();
-    }, [loading]);
+    }, [props.loading]);
 
     // initiate the wordlist after first load
     useEffect(() => {
