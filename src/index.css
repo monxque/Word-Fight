@@ -112,6 +112,10 @@ body {
 /*END PRESETS*/
 /* GLOBAL STYLES */
 
+.inactive {
+  color: #ffffff44 !important;
+}
+
 .gameshell {
   background: #ffa900;
   background-image: url(images/bg.jpg);

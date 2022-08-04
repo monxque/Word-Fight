@@ -8,15 +8,13 @@ export default function WordTyping(props) {
     const [currCharIndex, setCurrCharIndex] = useState(0);
     const [currDisplayWords, setCurrDisplayWords] = useState("");
     const [countCorrectWords, setCountCorrectWords] = useState(1);
-    const [isError, setIsError] = useState(false);
 
     //set useref
     const inputRef = useRef(null);
     const outputRef = useRef(null);
     const alertRef = useRef(null);
 
-    //start, reset, end function
-
+    //start, reset, end functions
     useEffect(() => {
         if (props.status === "started") {
             outputRef.current.focus();
@@ -74,16 +72,12 @@ export default function WordTyping(props) {
         }
 
         // check if input char is correct
-        // console.log("expected: " + wordList.charAt(currCharIndex));
-        // console.log("typed: " + typedChar);
         if (typedChar === wordList.charAt(currCharIndex)) {
             setCurrCharIndex(currCharIndex + 1);
-            setIsError(false);
+            
             if (typedChar.length === 1) {
                 outputRef.current.innerHTML += typedChar;
             }
-            // console.log(outputRef);
-            // console.log("correct");
             // when a spacebar is pressed and match with expected char
             if (keyCode === 32) {
                 outputRef.current.innerHTML = "";
@@ -102,13 +96,11 @@ export default function WordTyping(props) {
         } else {
             //error input
             if (typedChar.length === 1) {
-                setIsError(true);
                 alertRef.current.innerHTML = "";
                 outputRef.current.innerHTML += `<span class="wrongText">${typedChar}</span>`
                 setCountCorrectWords(1);
                 props.setScore(props.score - 10);
             }
-            // console.log("wrong")
         }
 
     };

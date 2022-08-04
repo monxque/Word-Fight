@@ -9,6 +9,8 @@ function usePrevious(value) {
 }
 
 export default function Profile(props) {
+
+  //set use states
   const [isEditing, setEditing] = useState(false);
   const [newName, setNewName] = useState('');
 
@@ -17,10 +19,12 @@ export default function Profile(props) {
   const editFieldRef = useRef(null);
   const editButtonRef = useRef(null);
 
+  //handle change of name
   function handleChange(e) {
     setNewName(e.target.value);
   }
 
+  //handle profile name change submission
   function handleSubmit(e) {
     e.preventDefault();
     props.editProfile(props.id, newName);
@@ -28,6 +32,7 @@ export default function Profile(props) {
     setEditing(false);
   }
 
+  //different templates for editing and viewing
   const editingTemplate = (
     <form className="stack-small" onSubmit={handleSubmit}>
       <div className="form-group">
@@ -97,6 +102,7 @@ export default function Profile(props) {
     </div>
   );
 
+  //update the focus when editing and after editing
   useEffect(() => {
     if (!wasEditing && isEditing) {
       editFieldRef.current.focus();

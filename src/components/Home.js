@@ -47,6 +47,14 @@ function Home() {
     </div>
   );
 
+  const withprofilestartbutton = (
+    <Link to="/gameplay" tabIndex="-1"> <button >Start </button></Link>
+  );
+
+  const noprofilestartbutton = (
+    <a><button className="inactive" onClick='alert("Please select profile first!")'>Start (please add profile first)</button></a>
+  );
+
   return (
     <div className="homepage">
 
@@ -55,7 +63,9 @@ function Home() {
       <div className="instructions list-bg">
         <h3>Instructions</h3>
         <p>Monsters are coming to our castle! Cast the spell by <span className="emphasize">typing THREE WORDS CORRECTLY in a row</span> to erase a monster! Don't let them reach our castle!</p></div>
-      <Link to="/gameplay" tabIndex="-1"> <button >Start </button></Link>
+      
+        {currProfile.name !=="" ? withprofilestartbutton : noprofilestartbutton}
+
       <Link to="/leaderboard" tabIndex="-1"><button>Leader Board</button></Link>
       <Link to="/documentation" tabIndex="-1"> <button>Documentation</button></Link>
       <Link to="/sources" tabIndex="-1"> <button>Sources</button></Link>

@@ -6,7 +6,7 @@ export default function Score(props) {
     <ul>
       <li>{props.name} </li>
       <li>{props.score} </li>
-      <li> {props.date} </li>
+      <li>{props.date} </li>
     </ul>
   </li>;
 }

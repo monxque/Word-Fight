@@ -21,32 +21,24 @@ export default function Gameplay() {
     //ACTIONS
     // start actions
     const start = () => {
-        //check if there is profile created
-        const data = localStorage.getItem('listOfProfiles');
-        if (data) {
-            if (data === "[]") {
-                alert("Please select profile first!");
-            } else {
-                // reset before start
-                if (status !== "started") {
-                    if (status === "ended") {
-                        reset();
-                    }
 
-                    //start and set time loop
-                    if (status === "waiting") {
-                        const newIntervalId = setInterval(() => {
-                            setTime((prevTime) => prevTime + 1);
-                        }, 1000);
-                        setIntervalId(newIntervalId);
-                        console.log("time is " + time);
-                        setStatus("started");
-                        setTimeRunning(true);
-                    }
-                }
+        // reset before start
+        if (status !== "started") {
+            if (status === "ended") {
+                reset();
+            }
+
+            //start and set time loop
+            if (status === "waiting") {
+                const newIntervalId = setInterval(() => {
+                    setTime((prevTime) => prevTime + 1);
+                }, 1000);
+                setIntervalId(newIntervalId);
+                console.log("time is " + time);
+                setStatus("started");
+                setTimeRunning(true);
             }
         }
-
     };
 
     //reset actions
@@ -54,13 +46,10 @@ export default function Gameplay() {
         clearInterval(intervalId);
         setIntervalId(0);
         setStatus("waiting");
-        // setCurrDisplayWords(wordList);
         setScore(0);
-        // setLoading(true);
         setTimeRunning(false);
         setRemovedMon(1);
         initMon();
-        console.log('stop now');
     };
 
     //set ended behaviour
@@ -121,7 +110,6 @@ export default function Gameplay() {
             //remove the monster that matches the id
             const idCheck = (m) => (("mon-" + id) === m.props.id);
             const isFound = monsters.some(idCheck);
-            // console.log("finding " + id + " " + isFound);
             if (isFound) {
                 const remainingMonsters = monsters.filter(monster => ("mon-" + id) !== monster.props.id);
                 console.log(remainingMonsters);
@@ -207,8 +195,6 @@ export default function Gameplay() {
             setMonIDPter(initNo + 1);
             setMonsters(initmonsterlist);
         }
-        // console.log("init")
-        // console.log(initmonsterlist);
     }
 
     useEffect(() => {
@@ -219,7 +205,7 @@ export default function Gameplay() {
 
     return (
         <div >
-            <div className={loading&&!loaded?"loading":"loaded"}>LOADING...</div>
+            <div className={loading && !loaded ? "loading" : "loaded"}>LOADING...</div>
             <h1>WORD FIGHT</h1>
             <div className="score"> <span >Score: {score}</span>
                 <button className="btn" onClick={start}>

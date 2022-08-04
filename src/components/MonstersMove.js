@@ -10,8 +10,6 @@ export default function MonstersMove(props) {
   //set monster move downwards according to time
   useEffect(() => {
     if (props.timeRunning) {
-      // console.log("time is running")
-      // increaseY();
       setX(randomX(X));
       if (Y < 18) {
         setY(moveSpeed + Y);
@@ -20,24 +18,16 @@ export default function MonstersMove(props) {
         props.setStatus("ended");
       }
     }
-    else {
-      // setX(X);
-    }
-    // setMoveSpeed(1);
   }, [props.timeRunning, props.time]);
 
-
+  // reset the position when the game is reset
   useEffect(() => {
     if (props.status === "waiting") {
       setY(0);
     }
   }, [props.status]);
-  // const increaseY = () => {
-  //   if (Y < 18) {
-  //     setY(Y + 4);
-  //   }
-  // }
 
+  //function to random the X coordinate
   const randomX = (X) => {
     if (Math.random() > 0.5 & X > 3)
       return X - Math.random() * 3;
