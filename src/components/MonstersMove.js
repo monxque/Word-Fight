@@ -5,7 +5,7 @@ export default function MonstersMove(props) {
 
   const [X, setX] = useState(Math.random() * 21 + 0.5);
   const [Y, setY] = useState(-1);
-  const [moveSpeed, setMoveSpeed] = useState(2);
+  const moveSpeed = 2;
 
   //set monster move downwards according to time
   useEffect(() => {

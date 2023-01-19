@@ -70,7 +70,6 @@ export default function Leaderboard() {
       {filterList}
     </div>
       <ul
-        role="list"
         className="list-bg stack-large stack-exception"
         aria-labelledby="list-heading"
       >

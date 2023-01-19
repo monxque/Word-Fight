@@ -52,7 +52,7 @@ function Home() {
   );
 
   const noprofilestartbutton = (
-    <a><button className="inactive" onClick='alert("Please select profile first!")'>Start (please add profile first)</button></a>
+    <button className="inactive" onClick='alert("Please select profile first!")'>Start (please add profile first)</button>
   );
 
   return (

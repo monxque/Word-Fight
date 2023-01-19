@@ -171,7 +171,6 @@ function ProfileSelection() {
       </h2>
       <div className="list-bg">
         <ul
-          role="list"
           className="stack-large stack-exception"
           aria-labelledby="list-heading"
         >
