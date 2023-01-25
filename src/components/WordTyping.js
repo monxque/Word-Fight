@@ -38,7 +38,7 @@ export default function WordTyping(props) {
         async function fetchData() {
             if (props.loading) {
                 console.log("fetch data");
-                const apiUrl = 'https://whispering-wildwood-90649.herokuapp.com/http://metaphorpsum.com/paragraphs/5';
+                const apiUrl = 'https://cors-anywhere-0iv1.onrender.com/http://metaphorpsum.com/paragraphs/5';
                 const res = await axios.get(apiUrl);
                 const loaded_words = res.data.replace(/\s+/g, " ");
                 props.setLoaded(true);

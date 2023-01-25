@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-const imageUrl = "https://whispering-wildwood-90649.herokuapp.com/https://app.pixelencounter.com/api/basic/monsters/random/png?size=60";
+const imageUrl = "https://cors-anywhere-0iv1.onrender.com/https://app.pixelencounter.com/api/basic/monsters/random/png?size=60";
 
 export default function Monsters(props) {
 
