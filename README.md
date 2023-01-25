@@ -15,4 +15,4 @@ Two APIs are consumed in this project:
 - Words from [Metaphorpsum](http://metaphorpsum.com/)
 
 A CORS proxy is used in this project:
-- [CORS everywhere] (https://github.com/Rob--W/cors-anywhere)
+- [CORS everywhere](https://github.com/Rob--W/cors-anywhere)
