@@ -15,12 +15,12 @@ function App() {
     <div className="gameshell stack-large">
       <Navbar />
       <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/sources" component={Sources} />
-        <Route path="/documentation" component={Documentation} />
-        <Route path="/gameplay" component={Gameplay} />
-        <Route path="/profileselection" component={ProfileSelection} />
-        <Route path="/leaderboard" component={Leaderboard} />
+        <Route path="/Word-Fight" component={Home} exact />
+        <Route path="/Word-Fight/sources" component={Sources} />
+        <Route path="/Word-Fight/documentation" component={Documentation} />
+        <Route path="/Word-Fight/gameplay" component={Gameplay} />
+        <Route path="/Word-Fight/profileselection" component={ProfileSelection} />
+        <Route path="/Word-Fight/leaderboard" component={Leaderboard} />
         <Route component={Error} />
       </Switch>
     </div>
