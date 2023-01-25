@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Word-Fight/static/css/main.cf10416b.css",
+    "main.js": "/Word-Fight/static/js/main.f0ff3898.js",
+    "static/media/bg.jpg": "/Word-Fight/static/media/bg.287b70acd2b538f0e154.jpg",
+    "index.html": "/Word-Fight/index.html",
+    "main.cf10416b.css.map": "/Word-Fight/static/css/main.cf10416b.css.map",
+    "main.f0ff3898.js.map": "/Word-Fight/static/js/main.f0ff3898.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf10416b.css",
+    "static/js/main.f0ff3898.js"
+  ]
+}
