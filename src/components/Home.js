@@ -35,20 +35,20 @@ function Home() {
         <div>{currProfile.maxScore}</div>
       </div>
       <div>
-        <Link to="/profileselection" tabIndex="-1" ><button className="btn" >Switch Profile</button></Link></div>
+        <Link to="/Word-Fight/profileselection" tabIndex="-1" ><button className="btn" >Switch Profile</button></Link></div>
     </div>
   );
 
   const noprofiletemplate = (
     <div className="currprofile">
-      <Link to="/profileselection" tabIndex="-1" >
+      <Link to="/Word-Fight/profileselection" tabIndex="-1" >
         <button className="btn btn__lg" >Add Profile</button>
       </Link>
     </div>
   );
 
   const withprofilestartbutton = (
-    <Link to="/gameplay" tabIndex="-1"> <button >Start </button></Link>
+    <Link to="/Word-Fight/gameplay" tabIndex="-1"> <button >Start </button></Link>
   );
 
   const noprofilestartbutton = (
@@ -66,9 +66,9 @@ function Home() {
       
         {currProfile.name !=="" ? withprofilestartbutton : noprofilestartbutton}
 
-      <Link to="/leaderboard" tabIndex="-1"><button>Leader Board</button></Link>
-      <Link to="/documentation" tabIndex="-1"> <button>Documentation</button></Link>
-      <Link to="/sources" tabIndex="-1"> <button>Sources</button></Link>
+      <Link to="/Word-Fight/leaderboard" tabIndex="-1"><button>Leader Board</button></Link>
+      <Link to="/Word-Fight/documentation" tabIndex="-1"> <button>Documentation</button></Link>
+      <Link to="/Word-Fight/sources" tabIndex="-1"> <button>Sources</button></Link>
     </div>
 
   );
